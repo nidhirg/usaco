@@ -2,9 +2,10 @@ import java.io.*;
 import java.util.*;
 
 //2019 Open Silver 1
-//Contest solution, 10/12, times out on 11 & 12
+//solution based on the solution on the website, probably not the most efficient method, but easier for me cuz i copy pasted a bunch of code from my solution
+//as of rn only gets the first two cases, but doesnt time out which is good. need to debug
 
-public class LeftOut {
+public class LeftOutSolution {
 	static int[][] switches;
 	public static void main(String[] args) throws IOException{
 		String inpath = "leftout.in";
@@ -16,26 +17,20 @@ public class LeftOut {
 		int N = Integer.parseInt(f.readLine());
 		switches = new int[N][N];
 		
-		int sum = 0;
 		for(int row = 0; row < N; row++) {
 			String roow = f.readLine();
 			for(int col = 0; col < N; col++) {
-				if(roow.charAt(col)=='R') switches[row][col] = 0;
-				else switches[row][col] = 1;
-				sum += switches[row][col];
+				if(roow.charAt(col)=='R') switches[row][col] = 1;
+				else switches[row][col] = 0;
 			}
 		}
 		
-		while(sum > 1) {
-			for(int i = 0; i < N; i++) {
-				if(sum('R',i,N)>N/2) {
-					sum+=flip('R',i,N);
-				}
+		for(int i = 1; i < N; i++) {
+			if(switches[0][i]==1) {
+				flip('C', i, N);
 			}
-			for(int i = 0; i < N; i++) {
-				if(sum('C',i,N)>N/2) {
-					sum+=flip('C',i,N);
-				}
+			if(switches[i][0]==1) {
+				flip('R', i, N);
 			}
 		}
 		
@@ -43,7 +38,15 @@ public class LeftOut {
 		for(int row = 0; row < N; row++) {
 			for(int col = 0; col < N; col++) {
 				if(switches[row][col] == 1) {
-					out.println((row+1)+" "+(col+1));
+					if(row != N-1 && switches[row+1][col]==1) {
+						out.println((1)+" "+(col+1));
+					}
+					else if(col != N-1 && switches[row][col+1] == 1) {
+						out.println((row+1)+" "+(1));
+					}
+					else {
+						out.println((row+1)+" "+(col+1));
+					}
 					out.close();
 					f.close();
 					found = true;
@@ -52,9 +55,7 @@ public class LeftOut {
 			}
 			if(found) break;
 		}
-		
 	}
-	
 	static int flip(char which, int num, int N) {
 		int swaps = 0;
 		if(which == 'R') {
@@ -70,19 +71,4 @@ public class LeftOut {
 		}
 		return N - 2*swaps;
 	}
-	
-	static int sum(char which, int num, int N) {
-		int swaps = 0;
-		if(which == 'R') {
-			for(int i = 0; i < N; i++) {
-				swaps += switches[num][i];
-			}
-		}else {
-			for(int i = 0; i < N; i++) {
-				swaps += switches[i][num];
-			}
-		}
-		return swaps;
-	}
-
 }

@@ -2,6 +2,7 @@ import java.io.*;
 import java.util.*;
 
 //2019 Open Silver 2
+//Contest submission, 9/12 correct, times out test cases 10, 11, and 12
 
 public class CowSteepleChase {
 	public static class Line implements Comparable<Line>{

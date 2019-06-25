@@ -2,6 +2,7 @@ import java.io.*;
 import java.util.*;
 
 //2019 Open Silver 3
+//doesnt get sample case lmao
 
 public class FencePlanning2 {
 	public static class Cow{
@@ -21,8 +22,8 @@ public class FencePlanning2 {
 		String inpath = "fenceplan.in";
 		String outpath = "fenceplan.out";
 		String prepath = "C:\\Users\\nidhi\\eclipse-workspace\\usaco\\src\\usaco\\practice\\";
-		BufferedReader f = new BufferedReader(new FileReader(prepath+inpath));
-		PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(prepath+outpath)));
+		BufferedReader f = new BufferedReader(new FileReader(inpath));
+		PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(outpath)));
 		StringTokenizer st;
 		
 		st = new StringTokenizer(f.readLine());

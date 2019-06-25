@@ -2,6 +2,8 @@ import java.io.*;
 import java.util.*;
 
 //2019 Open Silver 3
+//Contest solution, 1/10, sample case only
+//I think issue is that I wanted to be passing references to the arraylists but i passed new arraylists instead
 
 public class FencePlanning {
 	
@@ -43,8 +45,8 @@ public class FencePlanning {
 		String inpath = "fenceplan.in";
 		String outpath = "fenceplan.out";
 		String prepath = "C:\\Users\\nidhi\\eclipse-workspace\\usaco\\src\\usaco\\practice\\";
-		BufferedReader f = new BufferedReader(new FileReader(prepath + inpath));
-		PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(prepath+outpath)));
+		BufferedReader f = new BufferedReader(new FileReader(inpath));
+		PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(outpath)));
 		StringTokenizer st;
 		
 		st = new StringTokenizer(f.readLine());
